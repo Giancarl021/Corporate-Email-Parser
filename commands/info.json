@@ -1,0 +1,9 @@
+{
+    "message": "Precisamos de mais informações",
+    "subcommand": {
+        "args": [
+            "...arr"
+        ],
+        "function": "return arr.reverse()"
+    }
+}
