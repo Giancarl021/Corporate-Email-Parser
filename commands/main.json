@@ -1,0 +1,30 @@
+{
+    "header": {
+        "message": "Saudações",
+        "subcommand": {
+            "args": [
+                "...arr"
+            ],
+            "function": "const now=new Date().getUTCHours()-3;let dayTime;if(now>=20||now<=4){dayTime='Boa noite';}else if(now>=13&&now<=19){dayTime='Boa tarde';}else{dayTime='Bom dia'} return dayTime + (arr ? ' ' + arr.join(', ').split('').reverse().join('').replace(/\\s,/, ' e ').split('').reverse().join('') + '.' : '');"
+        }
+    },
+    "info": {
+        "message": "Preciso de informações sobre",
+        "subcommand": {
+            "args": [
+                "...arr"
+            ],
+            "function": "return 'Preciso de informações sobre ' + arr.join(', ').split('').reverse().join('').replace(/\\s,/, ' e ').split('').reverse().join('')"
+        }
+    },
+    "moreinfo": {
+        "message": "Preciso de mais informações sobre",
+        "subcommand": {
+            "args": [
+                "...arr"
+            ],
+            "function": "return 'Preciso de mais informações sobre ' + arr.join(', ').split('').reverse().join('').replace(/\\s,/, ' e ').split('').reverse().join('')"
+        }
+    },
+    "_lastUpdate": "2020-02-01T03:07:47Z"
+}

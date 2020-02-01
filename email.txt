@@ -1,3 +1,5 @@
 $header(Cliente)$
 
+Hoje dia $today()$
+
 $info(AWS, Azure DevOps, Windows 10)$
