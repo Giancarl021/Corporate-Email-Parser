@@ -1,0 +1,9 @@
+{
+    "message": "Saudações",
+    "subcommand": {
+        "args": [
+            "...arr"
+        ],
+        "function": "const now=new Date().getUTCHours()-3;let dayTime;if(now>=20||now<=4){dayTime='Boa noite';}else if(now>=13&&now<=19){dayTime='Boa tarde';}else{dayTime='Bom dia'} return dayTime + (arr ? ' ' + arr.join(', ').split('').reverse().join('').replace(/\\s,/, ' e ').split('').reverse().join('') + '.' : '');"
+    }
+}

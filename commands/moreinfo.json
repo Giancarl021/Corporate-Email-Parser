@@ -1,0 +1,9 @@
+{
+    "message": "Preciso de mais informações sobre",
+    "subcommand": {
+        "args": [
+            "...arr"
+        ],
+        "function": "return 'Preciso de mais informações sobre ' + arr.join(', ').split('').reverse().join('').replace(/\\s,/, ' e ').split('').reverse().join('')"
+    }
+}
