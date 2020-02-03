@@ -6,9 +6,12 @@ async function parseCommands(text) {
     let final = text;
     const regex = /(\${[^}]*?})/gm;
     const bodyText = text.match(regex);
-    console.log(commands);
     for (const match of bodyText) {
-        const data = match.replace(/[\$\{\}]/gm, '');
+        const data = match.replace(/[\${}]/gm, '');
+        if (!data) {
+            final = final.replace(match, '');
+            continue;
+        }
         const key = data.replace(/\(.*\)/g, '');
         const isFunction = /\(.*\)/g.test(data);
         let r;
@@ -33,8 +36,8 @@ async function parseCommands(text) {
 
 async function getCommands() {
     const commands = {
-        main: require('./../commands/main'),
-        custom: require('./../commands/custom')
+        main: getJSON('commands/main.json'),
+        custom: getJSON('commands/custom.json')
     };
 
     return parseFunctions({
@@ -42,12 +45,20 @@ async function getCommands() {
         ...commands.custom
     });
 
+    function getJSON(path) {
+        return JSON.parse(fs.readFileSync(path));
+    }
+
     function parseFunctions(commands) {
         for (const key in commands) {
             if (!commands.hasOwnProperty(key) || key.charAt(0) === '_') continue;
             const command = commands[key];
             if (command.subcommand) {
-                command.function = new Function(...command.subcommand.args, command.subcommand.function);
+                if (command.subcommand.args) {
+                    command.function = new Function(...command.subcommand.args, command.subcommand.function);
+                } else {
+                    command.function = new Function(command.subcommand.function);
+                }
             } else {
                 command.function = function () {
                     return `[${key} command does not have a function]`;
@@ -60,29 +71,25 @@ async function getCommands() {
 
 async function updateCommands() {
     const local = require('../commands/main');
-
     try {
-        const filename = 'corporate-email-parser-main.json';
+        const filename = 'corporate-email-parser-commands.json';
         const data = await fetchJSON('https://api.github.com/gists/f19da3e6b16f68eea5f1088549ec2352');
-
         if (local._lastUpdate === data.updated_at) return;
-
         if (data.files[filename].truncate) {
             try {
                 const content = await fetchJSON(data.files[filename].raw_url);
                 content._lastUpdate = data.updated_at;
                 fs.writeFileSync('commands/main.json', JSON.stringify(content));
             } catch (e) {
-                // Failed to fetch Commands from server
+                console.error('Erro ao carregar dados do servidor (raw). ' + e.message);
             }
         } else {
             const content = JSON.parse(data.files[filename].content);
             content._lastUpdate = data.updated_at;
             fs.writeFileSync('commands/main.json', JSON.stringify(content));
-            r = content;
         }
     } catch (e) {
-        // Failed to fetch Commands from server
+        console.error('Erro ao carregar dados do servidor (direct). ' + e.message);
     }
 
     async function fetchJSON(url) {
