@@ -2,6 +2,7 @@ const fs = require('fs');
 const fetch = require('node-fetch');
 
 async function parseCommands(text) {
+    if(!text) return '';
     const commands = await getCommands();
     let final = text;
     const regex = /(\${[^}]*?})/gm;

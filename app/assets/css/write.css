@@ -9,13 +9,55 @@
     justify-content: space-evenly;
 }
 
-#input-email,
-#output-email {
+.split-side {
     width: calc(50% - 10px);
     height: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+#input-email,
+#output-email {
+    height: calc(90% - 10px);
+    width: 100%;
     resize: none;
     outline: none;
     background: transparent;
     box-shadow: var(--outer-shadow);
     padding: 10px;
+    font-size: 18px;
+    border-radius: 10px;
+}
+
+#input-email:focus,
+#output-email:focus {
+    box-shadow: var(--inner-shadow);
+}
+
+.split-side-controls {
+    height: calc(10% - 10px);
+    width: 100%;
+    background-color: #fff4;
+    box-shadow: var(--outer-shadow);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.split-side-control {
+    width: auto;
+    height: 80%;
+    box-shadow: var(--outer-shadow);
+    border-radius: 5px;
+}
+
+.split-side-control:hover {
+    background-color: #fff2;
+}
+
+.split-side-control:active {
+    box-shadow: var(--inner-shadow);
 }

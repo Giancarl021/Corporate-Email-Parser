@@ -1,5 +1,4 @@
 const { shell, remote } = require('electron');
-const { parseCommands } = require('./../../libs/commands');
 const fs = require('fs');
 const transitionLoadTime = 200;
 let localRequire = null;
