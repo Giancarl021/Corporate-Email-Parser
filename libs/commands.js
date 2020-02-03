@@ -7,6 +7,7 @@ async function parseCommands(text) {
     let final = text;
     const regex = /(\${[^}]*?})/gm;
     const bodyText = text.match(regex);
+    if(!bodyText) return text;
     for (const match of bodyText) {
         const data = match.replace(/[\${}]/gm, '');
         if (!data) {

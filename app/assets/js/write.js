@@ -13,7 +13,12 @@ async function run() {
     output.value = await parseCommands(input.value);
 }
 
+function highlight() {
+    
+}
+
 module.exports = {
     load,
-    run
+    run,
+    highlight
 };
