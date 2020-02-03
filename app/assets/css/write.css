@@ -7,6 +7,7 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    flex-direction: row;
 }
 
 .split-side {
@@ -22,18 +23,20 @@
 #output-email {
     height: calc(90% - 10px);
     width: 100%;
-    resize: none;
     outline: none;
-    background: transparent;
     box-shadow: var(--outer-shadow);
     padding: 10px;
     font-size: 18px;
     border-radius: 10px;
+    font-family: 'Consolas', monospace;
 }
 
-#input-email:focus,
-#output-email:focus {
+#input-email:focus {
     box-shadow: var(--inner-shadow);
+}
+
+span.highlight {
+    color: red;
 }
 
 .split-side-controls {
