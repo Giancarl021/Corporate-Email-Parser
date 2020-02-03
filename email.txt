@@ -1,5 +1,5 @@
-$header(Cliente)$
+${header(Cliente)}
 
-Hoje dia $today()$
+Hoje dia ${today()}
 
-$info(AWS, Azure DevOps, Windows 10)$
+${info(AWS, Azure DevOps, Windows 10)}
