@@ -1,17 +1,42 @@
 {
-  "name": "corporative-email-parser",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
-  },
-  "keywords": [],
-  "author": "Giancarlo Fontela da Luz",
-  "license": "MIT",
-  "repository": "https://github.com/Giancarl021/Corporative-Email-Parser",
-  "dependencies": {
-    "node-fetch": "^2.6.0"
-  }
+    "name": "corporative-email-parser",
+    "version": "1.0.0",
+    "description": "A nodeJS Application that simplify the art of making corporative emails",
+    "main": "index.js",
+    "scripts": {
+        "test": "electron .",
+        "start": "electron .",
+        "pack": "electron-builder --dir",
+        "dist": "electron-builder"
+    },
+    "build": {
+        "appId": "com.giancarl021.CEP",
+        "productName": "Corporate E-Mail Parser",
+        "files": [
+            "**/*",
+            "!**/node_modules/*/{CHANGELOG.md,README.md,README,readme.md,readme}",
+            "!**/node_modules/*/{test,__tests__,tests,powered-test,example,examples}",
+            "!**/node_modules/*.d.ts",
+            "!**/node_modules/.bin",
+            "!**/*.{iml,o,hprof,orig,pyc,pyo,rbc,swp,csproj,sln,xproj}",
+            "!.editorconfig",
+            "!**/._*",
+            "!**/{.DS_Store,.git,.hg,.svn,CVS,RCS,SCCS,.gitignore,.gitattributes}",
+            "!**/{__pycache__,thumbs.db,.flowconfig,.idea,.vs,.nyc_output}",
+            "!**/{appveyor.yml,.travis.yml,circle.yml}",
+            "!**/{npm-debug.log,yarn.lock,.yarn-integrity,.yarn-metadata.json}",
+            "!dist/**/*"
+        ]
+    },
+    "keywords": [],
+    "author": "Giancarlo Fontela da Luz",
+    "license": "MIT",
+    "repository": "https://github.com/Giancarl021/Corporative-Email-Parser",
+    "dependencies": {
+        "node-fetch": "^2.6.0"
+    },
+    "devDependencies": {
+        "electron": "^7.1.11",
+        "electron-builder": "^22.3.2"
+    }
 }
