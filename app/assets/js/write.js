@@ -1,12 +1,12 @@
 const { parseCommands } = require('./../../../libs/commands');
 
-const __keywords = [];
-
 function load() {
     loadTransitions({
         selector: '.split-side-control',
         value: 'background-color .15s'
     });
+
+    document.getElementById('input-email').value = inputCache;
 }
 
 async function run() {
@@ -43,9 +43,14 @@ function copy() {
     document.execCommand('copy');
 }
 
+function unload() {
+    inputCache = document.getElementById('input-email').value;
+}
+
 module.exports = {
     load,
     run,
     highlight,
-    copy
+    copy,
+    unload
 };

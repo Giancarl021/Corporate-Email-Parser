@@ -3,7 +3,7 @@ const fs = require('fs');
 const transitionLoadTime = 200;
 let localRequire = null;
 
-let inputCache;
+let inputCache = '';
 
 const prefix = createPrefix();
 
@@ -120,6 +120,9 @@ function removeClass(element, className) {
 }
 
 function loadTab(target, element) {
+    if(localRequire && localRequire.unload) {
+        localRequire.unload();
+    }
     const toolbarItems = document.getElementsByClassName('toolbar-item');
     for (const toolbarItem of toolbarItems) {
         const classes = toolbarItem.classList;
