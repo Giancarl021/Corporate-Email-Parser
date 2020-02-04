@@ -10,6 +10,9 @@ function load() {
     }, {
         selector: '.command-modal input',
         value: 'border-bottom .3s'
+    }, {
+        selector: '.command-modal, #error-text',
+        value: 'opacity .3s'
     });
     const main = loadJSON('commands/main.json');
     const custom = loadJSON('commands/custom.json');
@@ -59,13 +62,48 @@ async function update() {
     load();
 }
 
+function loadArgs(args) {
+    const span = document.getElementById('function-args-preview');
+    if(!args.args) span.innerHTML = '';
+    span.innerHTML = '<span class="args-color">' + args.args.replace(/\s\s+/g, '').split(',').join('</span>, <span class="args-color">') + '</span>';
+
+}
+
 function add() {
-    showMsgBox('Work in Progress');
+    const modal = document.getElementsByClassName('command-modal')[0];
+    addClass(modal, 'modal-enabled');
+}
+
+function serializeCommand() {
+    const form = document.getElementById('command-form');
+    const inputs = [...form.getElementsByTagName('input'), ...form.getElementsByTagName('textarea')];
+    const data = {};
+    for (const input of inputs) {
+        if (input.hasAttribute('required') && input.value.length === 0) {
+            showErr();
+            break;
+        } else {
+            data[input.id] = input.value;
+        }
+    }
+    console.log(data);
+
+    function showErr() {
+        document.getElementById('error-text').style.opacity = '1';
+    }
+}
+
+function cancelModal() {
+    removeClass(document.getElementsByClassName('command-modal')[0], 'modal-enabled');
+    document.getElementById('error-text').style.opacity = '0';
 }
 
 module.exports = {
     load,
     toggleList,
     update,
-    add
+    add,
+    loadArgs,
+    serializeCommand,
+    cancelModal
 };

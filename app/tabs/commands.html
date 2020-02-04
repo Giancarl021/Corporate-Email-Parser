@@ -21,18 +21,26 @@
 </div>
 <div class="command-modal">
     <form id="command-form">
-        <label for="name">Nome do Comando</label>
+        <label for="name">Nome do Comando*</label>
         <input id="name" type="text" name="name" required />
-        <label for="message">Mensagem</label>
+        <label for="message">Mensagem*</label>
         <input id="message" type="text" placeholder="" name="message" required />
         <input id="subcommand" type="checkbox" name="subcommand" />
         <label for="subcommand">Possui sub-comando</label>
         <div class="function-container">
-            <label for="function-args">Argumentos da função</label>
-            <label for="function-body">Corpo da função</label>
-            <textarea id="function-body" name="function-body"></textarea>
+            <label for="function-args">Argumentos da função (separados por vírgula)</label>
+            <input type="text" name="args" onblur="local('loadArgs', {args: this.value})"/>
+            <label for="function-body">Corpo da função*</label>
+            <div class="function">
+                <span>function (<span id="function-args-preview"></span>) {</span>
+                <textarea id="function-body" name="function-body" onkeydown="if(event.key === 'Tab') { event.preventDefault(); this.value += '    '}"></textarea>
+                <span>}</span>
+            </div>
         </div>
-        <button type="button" onclick="local('serializeCommand', { form: this.parentElement })">Serializar</button>
-        <button type="reset">Cancelar</button>
+        <span id="error-text">Todos os campos com * precisam ser preenchidos</span>
+        <div class="button-container">
+            <button type="button" onclick="local('serializeCommand')">Serializar</button>
+            <button type="reset" onclick="local('cancelModal')">Cancelar</button>
+        </div>
     </form>
 </div>
