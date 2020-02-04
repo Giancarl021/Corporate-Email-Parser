@@ -65,6 +65,18 @@ body {
     min-height: calc(100vh - var(--toolbar-height));
 }
 
+#loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: var(--dark-background);
+    box-shadow: var(--outer-shadow);
+    transition: opacity .3s;
+    pointer-events: none;
+}
+
 ::-webkit-scrollbar {
     width: 10px;
 }

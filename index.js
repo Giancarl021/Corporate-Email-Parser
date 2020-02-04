@@ -1,5 +1,4 @@
 const { app, BrowserWindow } = require('electron');
-const { updateCommands } = require('./libs/commands');
 let win;
 // Stating the application
 
@@ -30,10 +29,8 @@ function createMainWindow() {
         },
         show: false
     });
-    
-    updateCommands();
 
-    win.removeMenu();
+    // win.removeMenu();
 
     win.on('ready-to-show', () => {
         win.show()

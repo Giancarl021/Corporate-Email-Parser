@@ -1,9 +1,11 @@
 const { shell, remote } = require('electron');
+const { updateCommands } = require('./../../libs/commands');
 const fs = require('fs');
 const transitionLoadTime = 200;
 let localRequire = null;
 
 let inputCache = '';
+let outputCache = '';
 
 const prefix = createPrefix();
 
@@ -144,13 +146,15 @@ function loadTab(target, element) {
     }
 }
 
-function init() {
+async function init() {
     const toolbar = document.getElementById('toolbar');
     const initialTab = toolbar.getAttribute('data-initial-tab');
     loadCSSFiles();
     if (initialTab) {
         loadTab(initialTab, document.querySelector(`[alt="${initialTab}"]`));
     }
+    await updateCommands();
+    document.getElementById('loading').style.opacity = '0';
 }
 
 document.addEventListener('DOMContentLoaded', init);

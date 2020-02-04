@@ -1,6 +1,17 @@
 const fs = require('fs');
 const fetch = require('node-fetch');
 
+const { remote } = require('electron');
+const prefix = createPrefix();
+
+function createPrefix() {
+    let string = remote.app.getAppPath().replace(/\\/g, '/');
+    if (string.charAt(string.length - 1) !== '/') {
+        string += '/';
+    }
+    return string;
+}
+
 async function parseCommands(text) {
     if(!text) return '';
     const commands = await getCommands();
@@ -48,7 +59,7 @@ async function getCommands() {
     });
 
     function getJSON(path) {
-        return JSON.parse(fs.readFileSync(path));
+        return JSON.parse(fs.readFileSync(prefix + path));
     }
 
     function parseFunctions(commands) {

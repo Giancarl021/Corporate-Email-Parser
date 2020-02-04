@@ -1,4 +1,6 @@
-const { parseCommands } = require('./../../../libs/commands');
+const {
+    parseCommands
+} = require('./../../../libs/commands');
 
 function load() {
     loadTransitions({
@@ -7,6 +9,8 @@ function load() {
     });
 
     document.getElementById('input-email').value = inputCache;
+    document.getElementById('output-email').value = outputCache;
+    highlight();
 }
 
 async function run() {
@@ -16,8 +20,9 @@ async function run() {
 }
 
 function highlight(args) {
-    if (!args.event) return;
-    if (args.event.key.length > 1 && !['Delete', 'Backspace', 'Delete', 'Enter'].includes(args.event.key)) return;
+    if (args && args.event) {
+        if (args.event.key.length > 1 && !['Delete', 'Backspace', 'Delete', 'Enter'].includes(args.event.key)) return;
+    }
     const highlighter = document.getElementById('input-highlight');
     const text = document.getElementById('input-email').value;
     let final = text;
@@ -45,6 +50,7 @@ function copy() {
 
 function unload() {
     inputCache = document.getElementById('input-email').value;
+    outputCache = document.getElementById('output-email').value;
 }
 
 module.exports = {
