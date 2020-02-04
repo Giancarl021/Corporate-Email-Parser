@@ -1,9 +1,0 @@
-${header(Cliente)}
-
-Hoje dia ${today()}, preciso que faça algo pra mim.
-
-Agora: ${now()}
-
-AGORA: ${now(true)}
-
-${info(AWS, Azure DevOps, Windows 10)}

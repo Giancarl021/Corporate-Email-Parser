@@ -11,6 +11,7 @@
 }
 
 .split-side {
+    position: relative;
     width: calc(50% - 10px);
     height: 95%;
     display: flex;
@@ -29,9 +30,37 @@
     font-size: 18px;
     border-radius: 10px;
     font-family: 'Consolas', monospace;
+    resize: none;
+    display: block;
+    background-color: transparent;
 }
 
-#input-email:focus {
+.highlight {
+    color: transparent;
+    position: absolute;
+    height: calc(90% - 10px);
+    bottom: 5px;
+    width: 100%;
+    outline: none;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 10px;
+    font-family: 'Consolas', monospace;
+    resize: none;
+    display: block;
+    background-color: transparent;
+    pointer-events: none;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+mark.highlighter {
+    color: transparent;
+    background-color: #BBAEFF1c;
+}
+
+#input-email:focus,
+#output-email:focus {
     box-shadow: var(--inner-shadow);
 }
 

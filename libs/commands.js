@@ -9,7 +9,7 @@ async function parseCommands(text) {
     const bodyText = text.match(regex);
     if(!bodyText) return text;
     for (const match of bodyText) {
-        const data = match.replace(/(\${|})/gm, '');
+        const data = match.replace(/(\${|\n|}$)/gm, '');
         if (!data) {
             final = final.replace(match, '');
             continue;

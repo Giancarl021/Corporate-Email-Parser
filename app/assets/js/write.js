@@ -12,26 +12,40 @@ function load() {
 async function run() {
     const input = document.getElementById('input-email');
     const output = document.getElementById('output-email');
-    output.innerText = await parseCommands(input.innerText);
+    output.value = await parseCommands(input.value);
 }
 
-function highlight() {
-    const input = document.getElementById('input-email');
-    const text = input.innerText;
+function highlight(args) {
+    if(!args.event) return;
+    if(args.event.key.length > 1 && !['Delete', 'Backspace', 'Delete', 'Enter'].includes(args.event.key)) return;
+    const highlighter = document.getElementById('input-highlight');
+    const text = document.getElementById('input-email').value;
     let final = text;
-    if(!text) return;
+    if (!text) {
+        highlighter.innerHTML = '';
+        return;
+    }
     const regex = /(\${[^}]*?})/gm;
     const highlights = text.match(regex);
-    if(!highlights) return;
-    for(const highlight of highlights) {
-        final = final.replace(highlight, `<span class="highlight">${highlight}</span>`);
+    if (!highlights) {
+        final = final.replace(/<mark\sclass="highlighter">.*?<\/mark>/gm, '')
+    } else {
+        for (const highlight of highlights) {
+            final = final.replace(highlight, `<mark class="highlighter">${highlight}</mark>`);
+        }
     }
-    input.innerHTML = final;
-    input.setSelectionRange(1,1);
+    highlighter.innerHTML = final;
+}
+
+function copy() {
+    const output = document.getElementById('output-email');
+    output.select();
+    document.execCommand('copy');
 }
 
 module.exports = {
     load,
     run,
-    highlight
+    highlight,
+    copy
 };
