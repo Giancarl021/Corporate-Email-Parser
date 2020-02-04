@@ -39,16 +39,16 @@ function saveJSON(path, data) {
     saveFile(path, JSON.stringify(data));
 }
 
-function deleteFile(path, isUnpacked = false) {
-    const address = isUnpacked ? unpackedPrefix + path : prefix + path;
+function deleteFile(path) {
+    const address = prefix + path;
     console.log('deleteFile: ' + address);
     fs.unlinkSync(address);
 }
 
-function saveFile(path, string, isUnpacked = false) {
-    const address = isUnpacked ? unpackedPrefix + path : prefix + path;
+function saveFile(path, string) {
+    const address = prefix + path;
     console.log('saveFile: ' + address);
-    fs.writeFileSync(prefix + path, string);
+    fs.writeFileSync(address, string);
 }
 
 function loadDir(path, isUnpacked = false) {
