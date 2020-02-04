@@ -94,7 +94,6 @@ function showMsgBox(message) {
 // API Calls
 
 
-
 // Main page
 
 function loadCSSFiles() {

@@ -16,8 +16,8 @@ async function run() {
 }
 
 function highlight(args) {
-    if(!args.event) return;
-    if(args.event.key.length > 1 && !['Delete', 'Backspace', 'Delete', 'Enter'].includes(args.event.key)) return;
+    if (!args.event) return;
+    if (args.event.key.length > 1 && !['Delete', 'Backspace', 'Delete', 'Enter'].includes(args.event.key)) return;
     const highlighter = document.getElementById('input-highlight');
     const text = document.getElementById('input-email').value;
     let final = text;
@@ -31,7 +31,7 @@ function highlight(args) {
         final = final.replace(/<mark\sclass="highlighter">.*?<\/mark>/gm, '')
     } else {
         for (const highlight of highlights) {
-            final = final.replace(new RegExp(`^(?!<mark\\sclass="highlighter">)${highlight.replace(/([.?*+^$[\]\\(){}|-])/g, "\\$1")}(?!<\\/mark>)$`, 'gm'), `<mark class="highlighter">${highlight}</mark>`);
+            final = final.replace(new RegExp(`(?!<mark\\sclass="highlighter">)${highlight.replace(/([.?*+^$[\]\\(){}|-])/g, "\\$1")}(?!<\\/mark>)`, 'gm'), `<mark class="highlighter">${highlight}</mark>`);
         }
     }
     highlighter.innerHTML = final;
