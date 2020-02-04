@@ -1,0 +1,64 @@
+.command-container {
+    width: 100%;
+    min-height: calc(100vh - var(--toolbar-height) - 20px);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.command-class {
+    position: relative;
+    width: calc(100% - 20px);
+    background-color: #0004;
+    margin: 5px 0;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: var(--outer-shadow);
+}
+
+.command-class-title {
+    margin: 0;
+    padding: 0;
+    display: block;
+    text-align: center;
+    background: #fff3;
+    border-radius: 10px;
+    height: 30px;
+    font-size: 24px;
+    box-shadow: var(--outer-shadow);
+}
+
+.command-list-item {
+    margin: 10px 0;
+    background-color: #ffffff02;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: var(--inner-shadow);
+}
+
+.command-list-item:last-child {
+    margin: 10px 0 0 0;
+}
+
+.command-list-item-title {
+    margin: 0;
+    padding: 0;
+    display: block;
+    font-size: 24px;
+}
+
+.command-list-item-data li {
+    list-style-type: none;
+    font-weight: 100;
+    padding: 5px;
+}
+
+.command-list-item-data li > span {
+    font-weight: bold;
+    display: block;
+    background-color: #ffffff03;
+    padding: 20px;
+    margin: 5px 0;
+}

@@ -4,33 +4,35 @@ const transitionLoadTime = 200;
 let localRequire = null;
 
 const prefix = createPrefix();
-const unpackedPrefix = createPrefix(true);
-
-let isRendering = false;
 
 // File
 
-function createPrefix(isUnpacked = false) {
+function createPrefix() {
     let string = remote.app.getAppPath().replace(/\\/g, '/');
     if (string.charAt(string.length - 1) !== '/') {
         string += '/';
     }
-    if (isUnpacked) {
-        string = string.replace('.asar', '.asar.unpacked');
-    }
     return string;
 }
 
-function fileExists(path, isUnpacked = false) {
-    const address = isUnpacked ? unpackedPrefix + path : prefix + path;
+function fileExists(path) {
+    const address = prefix + path;
     console.log('fileExists: ' + address);
     return fs.existsSync(address);
 }
 
-function loadFile(path, isUnpacked = false) {
-    const address = isUnpacked ? unpackedPrefix + path : prefix + path;
+function loadFile(path) {
+    const address = prefix + path;
     console.log('loadFile: ' + address);
-    return fs.readFileSync(prefix + path, 'utf8');
+    return fs.readFileSync(address, 'utf8');
+}
+
+function loadJSON(path) {
+    return JSON.parse(loadFile(path));
+}
+
+function saveJSON(path, data) {
+    saveFile(path, JSON.stringify(data));
 }
 
 function deleteFile(path, isUnpacked = false) {
