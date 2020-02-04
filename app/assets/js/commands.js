@@ -1,6 +1,10 @@
 const beautify = require('js-beautify').js;
 
 function load() {
+    loadTransitions({
+        selector: '.command-class-title ',
+        value: 'background-color .15s'
+    });
     const main = loadJSON('commands/main.json');
     const custom = loadJSON('commands/custom.json');
 
@@ -25,6 +29,16 @@ function createListItem(dest, data) {
     dest.appendChild(item);
 }
 
+function toggleList(args) {
+    if(!args.list) return;
+    if(args.list.style.display !== 'none') {
+        args.list.style.display = 'none';
+    } else {
+        args.list.style.display = 'initial';
+    }
+}
+
 module.exports = {
-    load
+    load,
+    toggleList
 };

@@ -18,16 +18,45 @@
     box-shadow: var(--outer-shadow);
 }
 
+.command-class-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+
 .command-class-title {
+    width: calc(100% - 50px);
     margin: 0;
     padding: 0;
-    display: block;
+    display: inline-block;
     text-align: center;
     background: #fff3;
     border-radius: 10px;
     height: 30px;
     font-size: 24px;
     box-shadow: var(--outer-shadow);
+    user-select: none;
+}
+
+.command-class-button {
+    width: 30px;
+    background: #fff3;
+    border-radius: 10px;
+    padding: 3px;
+    height: auto;
+    display: inline-block;
+    user-select: none;
+}
+
+.command-class-title:hover,
+.command-class-button:hover {
+    background-color: #fff5;
+}
+
+.command-class-title:active,
+.command-class-button:active {
+    background-color: #fff7;
 }
 
 .command-list-item {

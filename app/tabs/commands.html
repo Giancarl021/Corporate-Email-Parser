@@ -1,10 +1,16 @@
 <div class="command-container">
     <div class="command-class">
-        <h1 class="command-class-title">Comandos Padrão</h1>
+        <div class="command-class-controls">
+            <h1 class="command-class-title" onclick="local('toggleList', {list: document.getElementById('command-main-list')})">Comandos Padrão</h1>
+            <img class="command-class-button" src="../assets/img/copy.svg">
+        </div>
         <div class="command-list" id="command-main-list"></div>
     </div>
     <div class="command-class">
-        <h1 class="command-class-title">Comandos personalizados</h1>
+        <div class="command-class-controls">
+            <h1 class="command-class-title" onclick="local('toggleList', {list: document.getElementById('command-custom-list')})">Comandos Personalizados</h1>
+            <img class="command-class-button" src="../assets/img/copy.svg">
+        </div>
         <div class="command-list" id="command-custom-list"></div>
     </div>
 </div>
