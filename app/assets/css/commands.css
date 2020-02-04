@@ -47,6 +47,7 @@
     height: auto;
     display: inline-block;
     user-select: none;
+    box-shadow: var(--outer-shadow);
 }
 
 .command-class-title:hover,
@@ -56,7 +57,7 @@
 
 .command-class-title:active,
 .command-class-button:active {
-    background-color: #fff7;
+    box-shadow: var(--inner-shadow);
 }
 
 .command-list-item {

@@ -2,14 +2,14 @@
     <div class="command-class">
         <div class="command-class-controls">
             <h1 class="command-class-title" onclick="local('toggleList', {list: document.getElementById('command-main-list')})">Comandos Padrão</h1>
-            <img class="command-class-button" src="../assets/img/copy.svg">
+            <img class="command-class-button" src="../assets/img/reload.svg" title="Recarregar comandos por requisição remota" onclick="local('update')" alt="reload">
         </div>
         <div class="command-list" id="command-main-list"></div>
     </div>
     <div class="command-class">
         <div class="command-class-controls">
             <h1 class="command-class-title" onclick="local('toggleList', {list: document.getElementById('command-custom-list')})">Comandos Personalizados</h1>
-            <img class="command-class-button" src="../assets/img/copy.svg">
+            <img class="command-class-button" src="../assets/img/add.svg" title="Adicionar comando personalizado" onclick="local('add')" alt="addCommand">
         </div>
         <div class="command-list" id="command-custom-list"></div>
     </div>

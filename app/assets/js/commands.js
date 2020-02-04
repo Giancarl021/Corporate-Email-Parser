@@ -1,8 +1,9 @@
 const beautify = require('js-beautify').js;
+const { updateCommands } = require('./../../../libs/commands');
 
 function load() {
     loadTransitions({
-        selector: '.command-class-title ',
+        selector: '.command-class-controls *',
         value: 'background-color .15s'
     });
     const main = loadJSON('commands/main.json');
@@ -10,11 +11,15 @@ function load() {
 
     const mainList = document.getElementById('command-main-list');
     const customList = document.getElementById('command-custom-list');
+
+    mainList.innerHTML = '';
     for (const key in main) {
         if (main.hasOwnProperty(key) && key.charAt(0) !== '_') {
             createListItem(mainList, { key: key, content: main[key] });
         }
     }
+
+    customList.innerHTML = '';
     for (const key in custom) {
         if (custom.hasOwnProperty(key)) {
             createListItem(customList, { key: key, content: custom[key] });
@@ -38,7 +43,18 @@ function toggleList(args) {
     }
 }
 
+async function update() {
+    await updateCommands();
+    load();
+}
+
+function add() {
+    showMsgBox('Work in Progress');
+}
+
 module.exports = {
     load,
-    toggleList
+    toggleList,
+    update,
+    add
 };
