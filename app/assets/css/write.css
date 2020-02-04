@@ -56,7 +56,7 @@
 
 mark.highlighter {
     color: transparent;
-    background-color: #BBAEFF1c;
+    background-color: #BBAEFF2c;
 }
 
 #input-email:focus,
@@ -84,6 +84,7 @@ span.highlight {
     height: 80%;
     box-shadow: var(--outer-shadow);
     border-radius: 5px;
+    user-select: none;
 }
 
 .split-side-control:hover {

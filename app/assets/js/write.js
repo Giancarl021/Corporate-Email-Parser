@@ -31,7 +31,7 @@ function highlight(args) {
         final = final.replace(/<mark\sclass="highlighter">.*?<\/mark>/gm, '')
     } else {
         for (const highlight of highlights) {
-            final = final.replace(highlight, `<mark class="highlighter">${highlight}</mark>`);
+            final = final.replace(new RegExp(`^(?!<mark\\sclass="highlighter">)${highlight.replace(/([.?*+^$[\]\\(){}|-])/g, "\\$1")}(?!<\\/mark>)$`, 'gm'), `<mark class="highlighter">${highlight}</mark>`);
         }
     }
     highlighter.innerHTML = final;
