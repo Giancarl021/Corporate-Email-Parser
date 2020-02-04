@@ -57,6 +57,8 @@
 mark.highlighter {
     color: transparent;
     background-color: #BBAEFF2c;
+    font-family: inherit;
+    font-size: inherit;
 }
 
 #input-email:focus,
