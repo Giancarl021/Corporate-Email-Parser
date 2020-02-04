@@ -41,10 +41,10 @@ body {
     user-select: none;
 }
 
-.toolbar-item img {
-    height: 100%;
-    width: auto;
-}
+/*.toolbar-item img {*/
+/*    height: 100%;*/
+/*    width: auto;*/
+/*}*/
 
 .toolbar-item:hover {
     background-color: #ffffff0e;

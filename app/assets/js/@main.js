@@ -123,8 +123,8 @@ function loadTab(target, element) {
             classes.remove('toolbar-item-selected');
         }
     }
-    if (element.parentElement) {
-        element.parentElement.classList.add('toolbar-item-selected');
+    if (element) {
+        element.classList.add('toolbar-item-selected');
     }
 
     const content = document.getElementById('content');
