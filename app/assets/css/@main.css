@@ -31,6 +31,8 @@ body {
     justify-content: space-evenly;
     align-items: center;
     box-shadow: var(--outer-shadow);
+    background-color: var(--dark-background);
+    z-index: 1;
 }
 
 .toolbar-item {
@@ -41,11 +43,6 @@ body {
     transition: box-shadow .3s, background-color .15s;
     user-select: none;
 }
-
-/*.toolbar-item img {*/
-/*    height: 100%;*/
-/*    width: auto;*/
-/*}*/
 
 .toolbar-item:hover {
     background-color: #ffffff0e;
@@ -66,4 +63,22 @@ body {
     left: 0;
     width: 100%;
     min-height: calc(100vh - var(--toolbar-height));
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--dark-background);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
