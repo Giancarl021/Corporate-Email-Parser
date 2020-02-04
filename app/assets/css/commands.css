@@ -92,3 +92,9 @@
     padding: 20px;
     margin: 5px 0;
 }
+
+.command-function-block {
+    font-family: 'Consolas', monospace;
+    font-size: 18px;
+    font-weight: 100 !important;
+}
