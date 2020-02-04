@@ -1,10 +1,15 @@
 const beautify = require('js-beautify').js;
-const { updateCommands } = require('./../../../libs/commands');
+const {
+    updateCommands
+} = require('./../../../libs/commands');
 
 function load() {
     loadTransitions({
-        selector: '.command-class-controls *',
+        selector: '.command-class-controls *, .command-modal button',
         value: 'background-color .15s'
+    }, {
+        selector: '.command-modal input',
+        value: 'border-bottom .3s'
     });
     const main = loadJSON('commands/main.json');
     const custom = loadJSON('commands/custom.json');
@@ -15,14 +20,20 @@ function load() {
     mainList.innerHTML = '';
     for (const key in main) {
         if (main.hasOwnProperty(key) && key.charAt(0) !== '_') {
-            createListItem(mainList, { key: key, content: main[key] });
+            createListItem(mainList, {
+                key: key,
+                content: main[key]
+            });
         }
     }
 
     customList.innerHTML = '';
     for (const key in custom) {
         if (custom.hasOwnProperty(key)) {
-            createListItem(customList, { key: key, content: custom[key] });
+            createListItem(customList, {
+                key: key,
+                content: custom[key]
+            });
         }
     }
 }
@@ -35,8 +46,8 @@ function createListItem(dest, data) {
 }
 
 function toggleList(args) {
-    if(!args.list) return;
-    if(args.list.style.display !== 'none') {
+    if (!args.list) return;
+    if (args.list.style.display !== 'none') {
         args.list.style.display = 'none';
     } else {
         args.list.style.display = 'initial';

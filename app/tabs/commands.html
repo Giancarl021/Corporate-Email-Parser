@@ -1,16 +1,38 @@
 <div class="command-container">
     <div class="command-class">
         <div class="command-class-controls">
-            <h1 class="command-class-title" onclick="local('toggleList', {list: document.getElementById('command-main-list')})">Comandos Padrão</h1>
-            <img class="command-class-button" src="../assets/img/reload.svg" title="Recarregar comandos por requisição remota" onclick="local('update')" alt="reload">
+            <h1 class="command-class-title"
+                onclick="local('toggleList', {list: document.getElementById('command-main-list')})">Comandos Padrão</h1>
+            <img class="command-class-button" src="../assets/img/reload.svg"
+                title="Recarregar comandos por requisição remota" onclick="local('update')" alt="reload">
         </div>
         <div class="command-list" id="command-main-list"></div>
     </div>
     <div class="command-class">
         <div class="command-class-controls">
-            <h1 class="command-class-title" onclick="local('toggleList', {list: document.getElementById('command-custom-list')})">Comandos Personalizados</h1>
-            <img class="command-class-button" src="../assets/img/add.svg" title="Adicionar comando personalizado" onclick="local('add')" alt="addCommand">
+            <h1 class="command-class-title"
+                onclick="local('toggleList', {list: document.getElementById('command-custom-list')})">Comandos
+                Personalizados</h1>
+            <img class="command-class-button" src="../assets/img/add.svg" title="Adicionar comando personalizado"
+                onclick="local('add')" alt="addCommand">
         </div>
         <div class="command-list" id="command-custom-list"></div>
     </div>
+</div>
+<div class="command-modal">
+    <form id="command-form">
+        <label for="name">Nome do Comando</label>
+        <input id="name" type="text" name="name" required />
+        <label for="message">Mensagem</label>
+        <input id="message" type="text" placeholder="" name="message" required />
+        <input id="subcommand" type="checkbox" name="subcommand" />
+        <label for="subcommand">Possui sub-comando</label>
+        <div class="function-container">
+            <label for="function-args">Argumentos da função</label>
+            <label for="function-body">Corpo da função</label>
+            <textarea id="function-body" name="function-body"></textarea>
+        </div>
+        <button type="button" onclick="local('serializeCommand', { form: this.parentElement })">Serializar</button>
+        <button type="reset">Cancelar</button>
+    </form>
 </div>

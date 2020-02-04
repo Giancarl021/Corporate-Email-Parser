@@ -85,7 +85,7 @@
     padding: 5px;
 }
 
-.command-list-item-data li > span {
+.command-list-item-data li>span {
     font-weight: bold;
     display: block;
     background-color: #ffffff03;
@@ -98,4 +98,105 @@
     font-size: 18px;
     font-weight: 100 !important;
     word-break: break-all;
+}
+
+.command-modal {
+    position: fixed;
+    width: calc(100% - 60px);
+    height: calc(100% - var(--toolbar-height) - 40px);
+    top: calc(20px + var(--toolbar-height));
+    left: 30px;
+    background-color: var(--dark-background);
+    box-shadow: var(--outer-shadow);
+    padding: 20px;
+    /* display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column; */
+}
+
+.command-modal label {
+    width: 100%;
+    display: block;
+    font-size: 18px;
+    margin-bottom: 3px;
+    user-select: none;
+}
+
+.command-modal label[for="subcommand"] {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: row;
+}
+
+.command-modal input {
+    width: 100%;
+    display: block;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid gray;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.command-modal input:focus {
+    border-bottom: 2px solid white;
+}
+
+.command-modal input[type="checkbox"] {
+    display: none;
+}
+
+.command-modal label[for="subcommand"]::before {
+    content: '';
+    position: relative;
+    display: inline-block;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background-color: #fff2;
+    margin-right: 5px;
+    transition: .3s;
+}
+
+.command-modal #subcommand:checked+label[for="subcommand"]::before {
+    background-color: #fff8;
+}
+
+.command-modal #subcommand:checked~.function-container {
+    display: block;
+}
+
+.command-modal #subcommand~.function-container {
+    display: none;
+}
+
+.command-modal textarea {
+    position: relative;
+    width: 100%;
+    min-height: 30px;
+    resize: none;
+    background-color: #ffffff02;
+    padding: 20px;
+    outline: none;
+}
+
+.command-modal button {
+    background-color: transparent;
+    padding: 20px;
+    margin: 0 5px;
+    outline: none;
+    font-size: 24px;
+    box-shadow: var(--outer-shadow);
+}
+
+.command-modal button:hover {
+    background-color: #fff2;
+}
+
+.command-modal button:active {
+    box-shadow: var(--inner-shadow);
 }
