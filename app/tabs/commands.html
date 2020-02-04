@@ -29,7 +29,7 @@
         <label for="subcommand">Possui sub-comando</label>
         <div class="function-container">
             <label for="function-args">Argumentos da função (separados por vírgula)</label>
-            <input type="text" name="args" onblur="local('loadArgs', {args: this.value})"/>
+            <input type="text" id="function-args" name="args" onblur="local('loadArgs', {args: this.value})"/>
             <label for="function-body">Corpo da função*</label>
             <div class="function">
                 <span>function (<span id="function-args-preview"></span>) {</span>
@@ -39,8 +39,8 @@
         </div>
         <span id="error-text">Todos os campos com * precisam ser preenchidos</span>
         <div class="button-container">
-            <button type="button" onclick="local('serializeCommand')">Serializar</button>
-            <button type="reset" onclick="local('cancelModal')">Cancelar</button>
+            <button type="button" onclick="local('serializeCommand')">Criar Comando</button>
+            <button type="reset" onclick="local('closeModal')">Cancelar</button>
         </div>
     </form>
 </div>

@@ -1,7 +1,6 @@
 const beautify = require('js-beautify').js;
-const {
-    updateCommands
-} = require('./../../../libs/commands');
+
+const { updateCommands } = require('./../../../libs/commands');
 
 function load() {
     loadTransitions({
@@ -64,8 +63,8 @@ async function update() {
 
 function loadArgs(args) {
     const span = document.getElementById('function-args-preview');
-    if(!args.args) span.innerHTML = '';
-    span.innerHTML = '<span class="args-color">' + args.args.replace(/\s\s+/g, '').split(',').join('</span>, <span class="args-color">') + '</span>';
+    if (!args.args) span.innerHTML = '';
+    span.innerHTML = '<span class="args-color">' + args.args.replace(/\s/g, '').split(',').join('</span>, <span class="args-color">') + '</span>';
 
 }
 
@@ -78,22 +77,42 @@ function serializeCommand() {
     const form = document.getElementById('command-form');
     const inputs = [...form.getElementsByTagName('input'), ...form.getElementsByTagName('textarea')];
     const data = {};
+    let hasSubcommand = false;
     for (const input of inputs) {
-        if (input.hasAttribute('required') && input.value.length === 0) {
+        if ((input.hasAttribute('required') || (input.tagName === 'TEXTAREA' && hasSubcommand)) && input.value.length === 0) {
             showErr();
-            break;
+            return;
         } else {
             data[input.id] = input.value;
         }
+        if (input.type === 'checkbox' && input.checked) {
+            hasSubcommand = true;
+        }
     }
-    console.log(data);
+
+    const command = {
+        message: data.message
+    };
+
+    if (hasSubcommand) {
+        command.subcommand = {
+            args: data['function-args'].replace(/\s/gm, '').split(','),
+            function: data['function-body'].replace(/\n/gm, '')
+        }
+    }
+
+    const json = loadJSON('commands/custom.json');
+    json[data.name] = command;
+    saveJSON('commands/custom.json', json);
+    load();
+    closeModal();
 
     function showErr() {
         document.getElementById('error-text').style.opacity = '1';
     }
 }
 
-function cancelModal() {
+function closeModal() {
     removeClass(document.getElementsByClassName('command-modal')[0], 'modal-enabled');
     document.getElementById('error-text').style.opacity = '0';
 }
@@ -105,5 +124,5 @@ module.exports = {
     add,
     loadArgs,
     serializeCommand,
-    cancelModal
+    closeModal
 };

@@ -1,1 +1,1 @@
-{}
+{"teste":{"message":"aaaaaa","subcommand":{"args":["a"],"function":"return a;"}}}

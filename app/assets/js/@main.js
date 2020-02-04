@@ -3,6 +3,8 @@ const fs = require('fs');
 const transitionLoadTime = 200;
 let localRequire = null;
 
+let inputCache;
+
 const prefix = createPrefix();
 
 // File
