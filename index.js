@@ -30,7 +30,7 @@ function createMainWindow() {
         show: false
     });
 
-    // win.removeMenu();
+    win.removeMenu();
 
     win.on('ready-to-show', () => {
         win.show()
