@@ -58,10 +58,6 @@ async function getCommands() {
         ...commands.custom
     });
 
-    function getJSON(path) {
-        return JSON.parse(fs.readFileSync(prefix + path));
-    }
-
     function parseFunctions(commands) {
         for (const key in commands) {
             if (!commands.hasOwnProperty(key) || key.charAt(0) === '_') continue;
@@ -83,7 +79,7 @@ async function getCommands() {
 }
 
 async function updateCommands() {
-    const local = require('../commands/main');
+    const local = getJSON('commands/main.json');
     try {
         const filename = 'corporate-email-parser-commands.json';
         const data = await fetchJSON('https://api.github.com/gists/f19da3e6b16f68eea5f1088549ec2352');
@@ -109,6 +105,10 @@ async function updateCommands() {
         const response = await fetch(url);
         return await response.json();
     }
+}
+
+function getJSON(path) {
+    return JSON.parse(fs.readFileSync(prefix + path));
 }
 
 module.exports = {
