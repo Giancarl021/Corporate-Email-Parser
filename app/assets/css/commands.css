@@ -232,3 +232,28 @@
     pointer-events: none;
     opacity: 0;
 }
+
+.command-list-item-controls {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+}
+
+.command-list-item-controls img {
+    width: auto;
+    height: 90%;
+    border-radius: 8px;
+    box-shadow: var(--outer-shadow);
+    margin-right: 10px;
+}
+
+.command-list-item-controls img:hover {
+    background-color: #fff2;
+}
+
+.command-list-item-controls img:active {
+    box-shadow: var(--inner-shadow);
+}

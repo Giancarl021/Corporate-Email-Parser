@@ -66,7 +66,7 @@ function openLink(url) {
 // Tabs calls
 
 function local(fn, args = undefined) {
-    if (!localRequire) {
+    if (!localRequire && !localRequire[fn]) {
         console.error('Local JS is not defined');
         return;
     }
