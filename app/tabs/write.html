@@ -2,15 +2,15 @@
     <div class="split-side">
         <div class="split-side-controls">
             <img src="../assets/img/run.svg" class="split-side-control" onclick="local('run')" title="Compilar E-Mail"
-                 alt="run"/>
+                alt="run" />
         </div>
-        <div class="highlight" id="input-highlight"></div>
-        <textarea id="input-email" onkeyup="local('highlight', {event: event})"></textarea>
+        <textarea id="input-email"
+            onkeydown="local('parseTab', {element: this, event: event})"></textarea>
     </div>
     <div class="split-side">
         <div class="split-side-controls">
             <img src="../assets/img/copy.svg" class="split-side-control" onclick="local('copy')"
-                 title="Copiar para a área de transferência" alt="copy">
+                title="Copiar para a área de transferência" alt="copy">
         </div>
         <textarea id="output-email" readonly></textarea>
     </div>
