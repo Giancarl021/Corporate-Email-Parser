@@ -35,7 +35,7 @@
     "repository": "https://github.com/Giancarl021/Corporative-Email-Parser",
     "dependencies": {
         "js-beautify": "^1.10.3",
-        "node-fetch": "^2.6.0"
+        "node-fetch": "^2.6.1"
     },
     "devDependencies": {
         "electron": "^7.2.4",
